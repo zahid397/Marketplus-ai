@@ -1,0 +1,26 @@
+[
+  {
+    "id": "n1",
+    "type": "signal",
+    "title": "New Signal",
+    "message": "NVDA institutional buy detected — confidence 87%",
+    "read": false,
+    "createdAt": "2026-05-25T12:31:58.297Z"
+  },
+  {
+    "id": "n2",
+    "type": "alert",
+    "title": "Price Alert",
+    "message": "TSLA crossed above $250 threshold",
+    "read": false,
+    "createdAt": "2026-05-25T11:36:58.301Z"
+  },
+  {
+    "id": "n3",
+    "type": "system",
+    "title": "Report Ready",
+    "message": "Your NVDA Pre-Earnings report is ready to download",
+    "read": false,
+    "createdAt": "2026-05-25T10:36:58.301Z"
+  }
+]

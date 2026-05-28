@@ -1,0 +1,22 @@
+[
+  {
+    "id": "rpt_1779719481104",
+    "ticker": "NVDA",
+    "template": "pre-earnings",
+    "title": "NVDA Pre-Earnings Intelligence",
+    "pages": 24,
+    "summary": "NVIDIA Corporation (NVDA) shows strong bullish pre-earnings signals. Hiring velocity at +48% MoM, news sentiment 72/100. Composite pre-earnings score: 87/100.",
+    "createdAt": "2026-05-25T14:31:21.105Z",
+    "status": "ready"
+  },
+  {
+    "id": "rpt_1779719090073",
+    "ticker": "NVDA",
+    "template": "pre-earnings",
+    "title": "NVDA Pre-Earnings Intelligence",
+    "pages": 24,
+    "summary": "NVIDIA Corporation (NVDA) shows strong bullish pre-earnings signals. Hiring velocity at +48% MoM, news sentiment 72/100. Composite pre-earnings score: 87/100.",
+    "createdAt": "2026-05-25T14:24:50.073Z",
+    "status": "ready"
+  }
+]
