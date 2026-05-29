@@ -31,6 +31,11 @@ type RequestOptions = RequestInit & {
 
 const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api').replace(/\/$/, '')
 
+// ব্রাউজারের কনসোলে চেক করার জন্য এই লগটা বসালাম
+if (typeof window !== 'undefined') {
+  console.log("🚀 Current API URL is:", API_BASE);
+}
+
 let backendOnline: boolean | null = null
 
 export function getApiBase(): string {
@@ -153,10 +158,12 @@ async function requestOrFallback<T>(path: string, fallback: () => T, options?: R
 
 export async function pingBackend(): Promise<boolean> {
   try {
-    await request<{ status: string }>('/health', { timeoutMs: 4000 })
+    // Render-এর স্লিপ মোডের জন্য টাইমআউট 4000 থেকে বাড়িয়ে 60000 করে দিলাম
+    await request<{ status: string }>('/health', { timeoutMs: 60000 })
     backendOnline = true
     return true
-  } catch {
+  } catch (error) {
+    console.error("Ping backend failed:", error)
     backendOnline = false
     return false
   }
