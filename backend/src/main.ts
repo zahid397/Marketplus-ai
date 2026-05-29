@@ -11,15 +11,9 @@ function isDemoMode(): boolean {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { logger: ['log', 'error', 'warn'] })
 
+  // 🔥 FIX: Changed origin to true so it allows ANY live frontend URL to connect!
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'http://localhost:3002',
-      'http://localhost:3003',
-      'http://127.0.0.1:3000',
-      'http://127.0.0.1:3002',
-      'http://127.0.0.1:3003',
-    ],
+    origin: true, 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization,x-user-id,x-user-email,Accept',
     credentials: true,
@@ -27,6 +21,8 @@ async function bootstrap() {
 
   app.useGlobalFilters(new AllExceptionsFilter())
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }))
+  
+  // This is why we needed the /api in the URL earlier!
   app.setGlobalPrefix('api')
 
   const port = Number(process.env.PORT) || 3001
@@ -35,12 +31,12 @@ async function bootstrap() {
   const base = `http://localhost:${port}/api`
   console.log('')
   console.log('  MarketPulse AI Backend')
-  console.log(`  URL:     ${base}`)
-  console.log(`  Health:  ${base}/health`)
-  console.log(`  Auth:    ${base}/auth/me`)
-  console.log(`  Reports: ${base}/reports`)
-  console.log(`  Export:  ${base}/reports/rpt_pre_earnings/export?format=pdf`)
-  console.log(`  Analyze: ${base}/analyze/NVDA`)
+  console.log(`  URL:      ${base}`)
+  console.log(`  Health:   ${base}/health`)
+  console.log(`  Auth:     ${base}/auth/me`)
+  console.log(`  Reports:  ${base}/reports`)
+  console.log(`  Export:   ${base}/reports/rpt_pre_earnings/export?format=pdf`)
+  console.log(`  Analyze:  ${base}/analyze/NVDA`)
   console.log(`  Demo mode: ${isDemoMode() ? 'ON' : 'OFF'}`)
   console.log('')
 }
